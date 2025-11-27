@@ -11,7 +11,7 @@ erDiagram
         string name "氏名"
         string email "メールアドレス"
         string password "パスワード"
-        string role "求職者(seeker) or 採用担当(recruiter)"
+        enum role "求職者(seeker) or 採用担当(recruiter)"
         datetime created_at "作成日時"
         datetime updated_at "更新日時"
     }
