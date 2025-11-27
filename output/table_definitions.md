@@ -12,7 +12,6 @@
 | 6  |    |    | created_at    | 作成日時       |                              | TIMESTAMP               | ○        |        |
 | 7  |    |    | updated_at    | 更新日時       |                              | TIMESTAMP               | ○        |        |
 
----
 
 ### job_seekers
 
@@ -24,7 +23,6 @@
 | 4  |    |    | created_at       | 作成日時   |                            | TIMESTAMP     | ○        |        |
 | 5  |    |    | updated_at       | 更新日時   |                            | TIMESTAMP     | ○        |        |
 
----
 
 ### recruiters
 
@@ -35,7 +33,6 @@
 | 3  |    |    | created_at    | 作成日時     |                            | TIMESTAMP | ○        |        |
 | 4  |    |    | updated_at    | 更新日時     |                            | TIMESTAMP | ○        |        |
 
----
 
 ### companies
 
@@ -48,7 +45,6 @@
 | 5  |    |    | created_at    | 作成日時   |                  | TIMESTAMP       | ○        |        |
 | 6  |    |    | updated_at    | 更新日時   |                  | TIMESTAMP       | ○        |        |
 
----
 
 ### jobs
 
@@ -63,7 +59,6 @@
 | 7  |    |    | created_at       | 作成日時     |                    | TIMESTAMP       | ○        |        |
 | 8  |    |    | updated_at       | 更新日時     |                    | TIMESTAMP       | ○        |        |
 
----
 
 ### applications
 
@@ -75,7 +70,6 @@
 | 4  |    |    | created_at       | 作成日時     |                         | TIMESTAMP | ○        |        |
 | 5  |    |    | updated_at       | 更新日時     |                         | TIMESTAMP | ○        |        |
 
----
 
 ### favorites
 
@@ -87,7 +81,6 @@
 | 4  |    |    | created_at    | 作成日時    |                         | TIMESTAMP | ○        |        |
 | 5  |    |    | updated_at    | 更新日時    |                         | TIMESTAMP | ○        |        |
 
----
 
 ### scouts
 
