@@ -54,10 +54,29 @@
 | 2  |    | ○  | company_id       | 会社ID       | companies.id       | INT            | ○        | FOREIGN KEY |
 | 3  |    |    | title            | タイトル     |                    | VARCHAR(200)   | ○        |        |
 | 4  |    |    | description      | 仕事内容     |                    | TEXT           | ○      |        |
-| 5  |    |    | required_skills  | 必須スキル   |                    | TEXT           | ○      |        |
-| 6  |    |    | salary           | 給与         |                    | TEXT   | ○    |        |
+| 5  |    |    | min_salary           | 最低給与         |                    | INT   | ○    |        |
+| 6  |    |    | max_salary           | 最高給与         |                    | INT   |     |        |
 | 7  |    |    | created_at       | 作成日時     |                    | TIMESTAMP       | ○        |        |
 | 8  |    |    | updated_at       | 更新日時     |                    | TIMESTAMP       | ○        |        |
+
+### skills
+
+| No | PK | FK | カラム名   | 項目名   | 備考       | データ型      | NOT NULL | 列制約 |
+|----|----|----|------------|----------|------------|---------------|----------|--------|
+| 1  | ○  |    | id         | スキルID | 自動採番   | INT           | ○        | PRIMARY KEY, AUTO_INCREMENT |
+| 2  |    |    | name       | スキル名 |            | VARCHAR(50)  | ○        |        |
+| 3  |    |    | created_at | 作成日時 |            | TIMESTAMP     | ○        |        |
+| 4  |    |    | updated_at | 更新日時 |            | TIMESTAMP     | ○        |        |
+
+### job_skills
+
+| No | PK | FK | カラム名   | 項目名         | 備考                          | データ型      | NOT NULL | 列制約 |
+|----|----|----|------------|----------------|-------------------------------|---------------|----------|--------|
+| 1  | ○  |    | id         | 求人スキルID   | 自動採番                      | INT           | ○        | PRIMARY KEY, AUTO_INCREMENT |
+| 2  |    | ○  | job_id     | 求人ID         | jobs.id 参照                  | INT           | ○        | FOREIGN KEY |
+| 3  |    | ○  | skill_id   | スキルID       | skills.id 参照                | INT           | ○        | FOREIGN KEY |
+| 4  |    |    | created_at | 作成日時       |                               | TIMESTAMP     | ○        |        |
+| 5  |    |    | updated_at | 更新日時       |                               | TIMESTAMP     | ○        |        |
 
 
 ### applications
@@ -88,7 +107,7 @@
 |----|----|----|------------------|--------------|--------------------------|----------|----------|--------|
 | 1  | ○  |    | id               | スカウトID   | 自動採番                 | INT      | ○        | PRIMARY KEY, AUTO_INCREMENT |
 | 2  |    | ○  | company_id       | 会社ID       | companies.id             | INT      | ○        | FOREIGN KEY |
-| 3  |    | ○  | job_id           | 対象求人ID   | jobs.id                  | INT      | ○        | FOREIGN KEY |
+| 3  |    | ○  | job_id           | 対象求人ID   | jobs.id                  | INT      |         | FOREIGN KEY |
 | 4  |    | ○  | job_seeker_id    | 求職者ID     | job_seekers.user_id      | INT      | ○        | FOREIGN KEY |
 | 5  |    |    | message          | メッセージ   |                          | TEXT     | ○       |        |
 | 6  |    |    | created_at       | 作成日時     |                          | TIMESTAMP | ○        |        |
