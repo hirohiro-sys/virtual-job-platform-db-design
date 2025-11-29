@@ -7,7 +7,7 @@
 | 1  | ○  |    | id            | ユーザーID     | 自動採番                     | INT                  | ○        |  |
 | 2  |    |    | name          | 氏名           |                              | VARCHAR(50)          | ○        |        |
 | 3  |    |    | email         | メールアドレス | ユニーク                     | VARCHAR(255)         | ○        | UNIQUE |
-| 4  |    |    | password      | パスワード     | DB保存時は暗号化             | VARCHAR(255)         | ○        |        |
+| 4  |    |    | password      | パスワード     | DB保存時にハッシュ化             | CHAR(60)         | ○        |        |
 | 5  |    |    | role          | ユーザー種別   | seeker / recruiter           | ENUM('seeker','recruiter') | ○   |        |
 | 6  |    |    | created_at    | 作成日時       | 自動設定                     | TIMESTAMP            | ○        | DEFAULT CURRENT_TIMESTAMP |
 | 7  |    |    | updated_at    | 更新日時       | 自動更新                     | TIMESTAMP            | ○        | DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP |
