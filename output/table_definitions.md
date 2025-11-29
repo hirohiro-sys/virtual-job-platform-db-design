@@ -77,6 +77,7 @@
 | 3  |    | ○  | skill_id   | スキルID       | skills.id 参照                | INT           | ○        | FOREIGN KEY |
 | 4  |    |    | created_at | 作成日時       |                               | TIMESTAMP     | ○        |        |
 | 5  |    |    | updated_at | 更新日時       |                               | TIMESTAMP     | ○        |        |
+|    |    |    |            |          |                  |          |          | **UNIQUE(job_id, skill_id)** |
 
 
 ### applications
@@ -88,6 +89,7 @@
 | 3  |    | ○  | job_seeker_id    | 求職者ID     | job_seekers.user_id     | INT      | ○        | FOREIGN KEY |
 | 4  |    |    | created_at       | 作成日時     |                         | TIMESTAMP | ○        |        |
 | 5  |    |    | updated_at       | 更新日時     |                         | TIMESTAMP | ○        |        |
+|    |    |    |                  |              |                  |          |          | **UNIQUE(job_id, job_seeker_id)** |
 
 
 ### favorites
@@ -99,6 +101,7 @@
 | 3  |    | ○  | job_seeker_id | 求職者ID    | job_seekers.user_id     | INT      | ○        | FOREIGN KEY |
 | 4  |    |    | created_at    | 作成日時    |                         | TIMESTAMP | ○        |        |
 | 5  |    |    | updated_at    | 更新日時    |                         | TIMESTAMP | ○        |        |
+|    |    |    |                  |              |                  |          |          | **UNIQUE(job_id, job_seeker_id)** |
 
 
 ### scouts
@@ -112,3 +115,5 @@
 | 5  |    |    | message          | メッセージ   |                          | TEXT     | ○       |        |
 | 6  |    |    | created_at       | 作成日時     |                          | TIMESTAMP | ○        |        |
 | 7  |    |    | updated_at       | 更新日時     |                          | TIMESTAMP | ○        |        |
+|    |    |    |                   |                |                  |          |          | **UNIQUE(company_id, job_id, job_seeker_id)** |
+
