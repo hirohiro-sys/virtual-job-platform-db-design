@@ -48,10 +48,29 @@ erDiagram
         int company_id FK "companies.idを参照"
         string title "タイトル"
         string description "仕事内容"
-        string required_skills "必須スキル"
-        string salary "給与"
+        int min_salary "最低給与"
+        int max_salary "最高給与"
         datetime created_at "作成日時"
         datetime updated_at "更新日時"
+    }
+
+    %% ---------------------------------------------------------
+    %% スキルマスタ
+    %% ---------------------------------------------------------
+    skills {
+        int id PK
+        string name "スキル名"
+        datetime created_at
+        datetime updated_at
+    }
+
+    %% ---------------------------------------------------------
+    %% 求人 × スキル (多対多)
+    %% ---------------------------------------------------------
+    job_skills {
+        int job_id FK "jobs.idを参照"
+        int skill_id FK "skills.idを参照"
+        datetime created_at
     }
 
     %% ---------------------------------------------------------
@@ -77,7 +96,7 @@ erDiagram
     }
 
     %% ---------------------------------------------------------
-    %% 5. スカウト（job_id 追加）
+    %% 5. スカウト
     %% ---------------------------------------------------------
     scouts {
         int id PK
@@ -108,4 +127,7 @@ erDiagram
     companies ||--o{ scouts : "1つの企業は複数のスカウトを送信できる"
     jobs ||--o{ scouts : "1つの求人につき複数のスカウトを送信できる"
     job_seekers ||--o{ scouts : "1人の求職者は複数のスカウトを受け取ることができる"
+
+    jobs ||--o{ job_skills : "1つの求人は複数の必須スキル情報を指定できる"
+    skills ||--o{ job_skills : "1つのスキル情報は複数の求人で利用される"
 ```
