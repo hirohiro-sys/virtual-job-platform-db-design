@@ -4,7 +4,7 @@
 erDiagram
 
     %% ---------------------------------------------------------
-    %% 1. ユーザー (Users)
+    %% 1. 全ユーザー
     %% ---------------------------------------------------------
     users {
         int id PK "ユーザーID"
@@ -12,100 +12,113 @@ erDiagram
         string email "メールアドレス"
         string password "パスワード"
         enum role "求職者(seeker) or 採用担当(recruiter)"
-        datetime created_at "作成日時"
-        datetime updated_at "更新日時"
+        timestamp created_at "作成日時"
+        timestamp updated_at "更新日時"
     }
+
+    %% ---------------------------------------------------------
+    %% 2. 求職者
+    %% ---------------------------------------------------------
 
     job_seekers {
         int user_id PK, FK "users.idを参照"
         string self_pr "自己PR"
         int desired_salary "希望年収"
-        datetime created_at "作成日時"
-        datetime updated_at "更新日時"
+        timestamp created_at "作成日時"
+        timestamp updated_at "更新日時"
     }
+
+    %% ---------------------------------------------------------
+    %% 3. 採用担当者
+    %% ---------------------------------------------------------
 
     recruiters {
         int user_id PK, FK "users.idを参照"
         int company_id FK "companies.idを参照"
-        datetime created_at "作成日時"
-        datetime updated_at "更新日時"
+        timestamp created_at "作成日時"
+        timestamp updated_at "更新日時"
     }
 
     %% ---------------------------------------------------------
-    %% 2. 企業・求人
+    %% 4. 企業
     %% ---------------------------------------------------------
     companies {
-        int id PK
-        string name "会社名"
+        int id PK "企業ID"
+        string name "企業名"
         string location "所在地"
         string description "事業内容"
-        datetime created_at "作成日時"
-        datetime updated_at "更新日時"
+        timestamp created_at "作成日時"
+        timestamp updated_at "更新日時"
     }
 
+    %% ---------------------------------------------------------
+    %% 5. 求人
+    %% ---------------------------------------------------------
+
     jobs {
-        int id PK
+        int id PK "求人ID"
         int company_id FK "companies.idを参照"
         string title "タイトル"
         string description "仕事内容"
         int min_salary "最低給与"
         int max_salary "最高給与"
-        datetime created_at "作成日時"
-        datetime updated_at "更新日時"
+        timestamp created_at "作成日時"
+        timestamp updated_at "更新日時"
     }
 
     %% ---------------------------------------------------------
-    %% スキルマスタ
+    %% 6. スキル(マスタテーブル)
     %% ---------------------------------------------------------
     skills {
-        int id PK
+        int id PK "job_skills.job_idを参照"
         string name "スキル名"
-        datetime created_at
-        datetime updated_at
+        timestamp created_at "作成日時"
+        timestamp updated_at "更新日時"
     }
 
     %% ---------------------------------------------------------
-    %% 求人 × スキル (多対多)
+    %% 7. 求人に紐つく必須スキル
     %% ---------------------------------------------------------
     job_skills {
         int job_id FK "jobs.idを参照"
         int skill_id FK "skills.idを参照"
-        datetime created_at
+        timestamp created_at "作成日時"
+        timestamp updated_at "更新日時"
     }
 
     %% ---------------------------------------------------------
-    %% 3. 応募
+    %% 8. 応募
     %% ---------------------------------------------------------
     applications {
-        int id PK
-        int job_id FK
-        int job_seeker_id FK
-        datetime created_at "作成日時"
-        datetime updated_at "更新日時"
+        int id PK "応募ID"
+        int job_id FK "jobs.idを参照"
+        int job_seeker_id FK "job_seekers.user_idを参照"
+        timestamp created_at "作成日時"
+        timestamp updated_at "更新日時"
     }
 
     %% ---------------------------------------------------------
-    %% 4. お気に入り
+    %% 9. お気に入り
     %% ---------------------------------------------------------
     favorites {
-        int id PK
-        int job_id FK
-        int job_seeker_id FK
-        datetime created_at "作成日時"
-        datetime updated_at "更新日時"
+        int id PK "お気に入りID"
+        int job_id FK "jobs.idを参照"
+        int job_seeker_id FK "job_seekers.user_idを参照"
+        timestamp created_at "作成日時"
+        timestamp updated_at "更新日時"
     }
 
     %% ---------------------------------------------------------
-    %% 5. スカウト
+    %% 10. スカウト
     %% ---------------------------------------------------------
     scouts {
-        int id PK
+        int id PK "スカウトID"
         int company_id FK "送信元企業"
         int job_id FK "対象求人"
         int job_seeker_id FK "送信先求職者"
         string message "スカウトメッセージ"
-        datetime created_at "作成日時"
-        datetime updated_at "更新日時"
+        timestamp created_at "作成日時"
+        timestamp updated_at "更新日時"
     }
 
     %% ---------------------------------------------------------
