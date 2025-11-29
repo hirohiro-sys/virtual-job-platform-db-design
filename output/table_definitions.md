@@ -115,5 +115,3 @@
 | 5  |    |    | message          | メッセージ   |                          | TEXT     | ○       |        |
 | 6  |    |    | created_at       | 作成日時     |                          | TIMESTAMP | ○        |        |
 | 7  |    |    | updated_at       | 更新日時     |                          | TIMESTAMP | ○        |        |
-|    |    |    |                   |                |                  |          |          | **UNIQUE(company_id, job_id, job_seeker_id)** |
-
